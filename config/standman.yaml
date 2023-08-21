@@ -1,0 +1,57 @@
+---
+version: 1
+nodes:
+  - uuid: "303482da-6bfe-4f56-8db9-c763bba85e77"
+    name: "node-1"
+    configuration:
+      a: 1
+      b: 2
+      c: 3
+      d: [1, 2, 3, 4]
+    resources:
+      cpu:
+        cores: 1
+        threads: 1
+      memory: 2147483648
+    disks:
+      - source: "alpine_0.qcow2"
+        target: "sda"
+        read: 1000000
+        write: 1000000
+    networks:
+      - source: "br0"
+        target: "vnet1" # ignored for now
+        address: "10.0.0.10/24" # ignored for now
+
+    display:
+      vnc:
+        port: 6000
+
+  - uuid: "87cdf54c-0497-4ae0-9a02-2c2b3576d1f0"
+    name: "node-2"
+    configuration:
+      a: 1
+      b: 2
+      c: 3
+      d: [1, 2, 3, 4]
+    resources:
+      cpu:
+        cores: 1
+        threads: 1
+      memory: 2147483648
+    disks:
+      - source: "alpine_1.qcow2"
+        target: "sda"
+        read: 1000000
+        write: 1000000
+    networks:
+      - source: "br0"
+        target: "vnet2" # ignored for now
+        address: "10.0.0.12/24" # ignored for now
+    display:
+      vnc:
+        port: 6001
+
+bridges:
+  - name: "br0"
+    address: "10.0.0.1/24"
