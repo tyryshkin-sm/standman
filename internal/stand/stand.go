@@ -60,17 +60,17 @@ func NodeDown(socket string, node *config.Node) error {
 	s := nodeToSpec(node)
 	x, err := s.Marshal()
 	if err != nil {
-		return fmt.Errorf("can't up domain: %w", err)
+		return fmt.Errorf("can't down domain: %w", err)
 	}
 
 	d, err := l.DomainDefineXML(x)
 	if err != nil {
-		return fmt.Errorf("can't up domain: %w", err)
+		return fmt.Errorf("can't down domain: %w", err)
 	}
 
 	err = l.DomainDestroy(d)
 	if err != nil {
-		return fmt.Errorf("can't up domain: %w", err)
+		return fmt.Errorf("can't down domain: %w", err)
 	}
 
 	if err := l.Disconnect(); err != nil {

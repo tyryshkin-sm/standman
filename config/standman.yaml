@@ -22,7 +22,6 @@ nodes:
       - source: "br0"
         target: "vnet1" # ignored for now
         address: "10.0.0.10/24" # ignored for now
-
     display:
       vnc:
         port: 6000
